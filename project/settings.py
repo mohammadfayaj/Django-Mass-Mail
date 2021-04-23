@@ -1,6 +1,5 @@
 from pathlib import Path
 import os
-import cloudinary_storage
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 WSGI_APPLICATION = 'project.wsgi.application'
@@ -20,7 +19,6 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-
 # django-allauth setup
 LOGIN_REDIRECT_URL = 'mass_mail:mail_handler'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -28,7 +26,6 @@ ACCOUNT_EMAIL_VERIFICATION = True
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION= True
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL= 'mass_mail:mail_handler'
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
-
 
 # Gmail setup
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'   
@@ -46,24 +43,12 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 # media settings
 MEDIA_URL = os.path.join(BASE_DIR, '/media/')
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 SITE_ID = 1
-
-
-CLOUDINARY_STORAGE = {
-
-    'CLOUD_NAME': 'dc1nfucu5',
-    'API_KEY': '815863632269532',
-    'API_SECRET': 'e3UR7bsNBL2MXodN9FpYXA19m_s'
-}
-
-# CLOUDINARY_URL=cloudinary://your_api_key:your_api_secret@your_cloud_name
 
 # Application definition
 INSTALLED_APPS = [
@@ -81,11 +66,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'cloudinary_storage',
-    # 'cloudinary',
-
-
-
+   
     'mass_mail.apps.MassMailConfig',
 ]
 

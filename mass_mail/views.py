@@ -14,6 +14,8 @@ def send_mail_handler(request):
 
 		path = rf'{mail_objects.attach_a_file.path}' 	# convert https:url to os path
 
+		# url = f"{mail_objects.attach_a_file}"			# http url
+
 		email = EmailMessage(
 
 		    subject = f'{mail_objects.subject}', 		# mail subject
@@ -31,7 +33,7 @@ def send_mail_handler(request):
 	except ObjectDoesNotExist:
 		messages.error(request, "Somethings Bad")
 
-	return redirect('/admin/mass_mail/sendmail/')
+	return redirect('/mass_mail/sendmail/')
 
 
 
