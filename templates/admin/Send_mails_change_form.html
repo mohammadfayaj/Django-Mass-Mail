@@ -1,0 +1,44 @@
+{% extends "admin/change_form.html" %}
+{% load static %}
+{% debug %}
+
+
+{% block object-tools %}
+{{ block.super }}
+	<div class="btn">
+		<input type="" name="next" value="{{ request.META.HTTP_REFERER }}" style="display: none;">
+    	<a href="{% url 'mass_mail:mail_handler' %}"> <i class="fa fa-file-pdf-o"></i> Send Mail</a>
+	</div>
+
+    <style type="text/css">
+    	.submit-row .default {
+    		display: none;
+    	}
+    	.submit-row input[name="_addanother"] {
+    		display: none;
+    	}
+    	.btn a {
+    		color: rgb(255, 255, 255);
+    		background: #9e7ebf;
+    		padding: 6px 15px;
+			border-radius: 15px;
+			font-weight: bold;
+			font-size: 12px;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+    	}
+
+    	.btn {
+    		margin-top: 0rem;
+    		margin-bottom: 2rem;
+    		float: right;
+    	}
+    </style>
+
+{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+
+ 
+{% endblock %}
